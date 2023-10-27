@@ -4,15 +4,19 @@ void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
+//creo las pestañas
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: DefaultTabController(
+        //cantidad de pestañas
         length: 3,
         child: Scaffold(
+          backgroundColor: Color.fromARGB(255, 31, 255, 162),
           appBar: AppBar(
-            title: const Text('Flutter Widgets Example'),
+            backgroundColor: Color.fromARGB(255, 255, 182, 227),
+            title: const Text('Presentación'),
             bottom: const TabBar(
               tabs: <Widget>[
                 Tab(text: 'PageView'),
@@ -44,9 +48,9 @@ class PageViewExample extends StatelessWidget {
     return PageView(
       controller: controller,
       children: const <Widget>[
-        Center(child: Text('First Page')),
-        Center(child: Text('Second Page')),
-        Center(child: Text('Third Page')),
+        Center(child: Text('Primera Página')),
+        Center(child: Text('Segunda Página')),
+        Center(child: Text('Tercera Página')),
       ],
     );
   }
@@ -67,6 +71,7 @@ class _RefreshIndicatorExampleState extends State<RefreshIndicatorExample> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.blueAccent,
       body: RefreshIndicator(
         key: _refreshIndicatorKey,
         color: Colors.white,
@@ -101,17 +106,18 @@ class ReorderableExample extends StatefulWidget {
   @override
   State<ReorderableExample> createState() => _ReorderableListViewExampleState();
 }
-
 class _ReorderableListViewExampleState extends State<ReorderableExample> {
   final List<int> _items = List<int>.generate(50, (int index) => index);
 
   @override
   Widget build(BuildContext context) {
+    
     final ColorScheme colorScheme = Theme.of(context).colorScheme;
     final Color oddItemColor = colorScheme.primary.withOpacity(0.05);
     final Color evenItemColor = colorScheme.primary.withOpacity(0.15);
 
     return ReorderableListView(
+    
       padding: const EdgeInsets.symmetric(horizontal: 40),
       children: <Widget>[
         for (int index = 0; index < _items.length; index += 1)
